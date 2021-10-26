@@ -50,3 +50,42 @@ Hour Hour::operator+(int num){
 }
 Hour Hour::operator-(int num){
     minutes -= num;
+    while(minutes < 0){
+        minutes += 60;
+        hours--;
+        if(hours == -1){
+            hours = 23;
+        }
+    }
+    return *this;  
+}
+bool Hour::operator<(Hour b){
+    if(hours*60 + minutes < b.hours*60 + b.minutes){
+        return true;
+    }
+    return false;
+}
+bool Hour::operator<=(Hour b){
+    if(hours*60 + minutes <= b.hours*60 + b.minutes){
+        return true;
+    }
+    return false;
+}
+bool Hour::operator>(Hour b){
+    if(hours*60 + minutes > b.hours*60 + b.minutes){
+        return true;
+    }
+    return false;
+}
+bool Hour::operator>=(Hour b){
+    if(hours*60 + minutes >= b.hours*60 + b.minutes){
+        return true;
+    }
+    return false;
+}
+bool Hour::operator==(Hour b){
+    if(hours*60 + minutes == b.hours*60 + b.minutes){
+        return true;
+    }
+    return false;
+}
