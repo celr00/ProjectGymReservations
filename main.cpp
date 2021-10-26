@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Hour.h"
+#include "Reservation.h"
 
 using namespace std;
 
