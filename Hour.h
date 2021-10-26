@@ -1,3 +1,36 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Hour{
+    public:
+        /***Constructors***/
+        Hour();
+        Hour(int hr, int min);
+
+        /***Sets and Gets***/
+        void setHour(int hr);
+        void setMinute(int min);
+        int getHour();
+        int getMinute();
+
+        /***Methods***/
+        void show();
+
+        /***Opertaor Overloading***/
+        Hour operator+(int num);
+        Hour operator-(int num);
+        bool operator<(Hour b);
+        bool operator<=(Hour b);
+        bool operator>(Hour b);
+        bool operator>=(Hour b);
+        bool operator==(Hour b);
+
+    protected:
+        int hours;
+        int minutes;
+};
 
 /*Constructors*/
 Hour::Hour(){
