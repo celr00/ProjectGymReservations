@@ -8,30 +8,55 @@ class Reservation{
     public:
         /*Constructores*/
         Reservation();
-        Reservation(string cs, int cc, Hour h, int dur);
+        Reservation(string sc, int ci, Hour sh, int dur);
 
         /*Gets y Sets*/
+        void setServiceCode(string sc);
+        void setclientId(int ci);
+        void setStartingHour(Hour sh);
+        void setDuration(int dur);
+
+        string getServiceCode();
+        int getclientId();
+        Hour getStartingHour();
+        int getDuration();
 
         /*Métodos*/
+        Hour getEndingHour();
 
     protected:
-        string claveServicio;
-        int claveCliente;
-        Hour horaInicio;
-        int duracion;
+        string serviceCode;
+        int clientId;
+        Hour startingHour;
+        int duration;
 };
 
 /*Constructores*/
 Reservation::Reservation(){
-    claveServicio = "N/A";
-    claveCliente = 0;
-    horaInicio = Hour();
-    duracion = 0;
+    serviceCode = "N/A";
+    clientId = 0;
+    startingHour = Hour();
+    duration = 0;
 }
 
-Reservation::Reservation(string cs, int cc, Hour h, int dur){
-    claveServicio = cs;
-    claveCliente = cc;
-    horaInicio = h;
-    duracion = dur;
+Reservation::Reservation(string cs, int ci, Hour h, int dur){
+    serviceCode = cs;
+    clientId = ci;
+    startingHour = h;
+    duration = dur;
+}
+
+/*Gets y Sets*/
+void Reservation::setServiceCode(string sc){serviceCode = sc;}
+void Reservation::setclientId(int ci){clientId = ci;}
+void Reservation::setStartingHour(Hour sh){startingHour = sh;}
+void Reservation::setDuration(int dur){duration = dur;}
+string Reservation::getServiceCode(){return serviceCode;}
+int Reservation::getclientId(){return clientId;}
+Hour Reservation::getStartingHour(){return startingHour;}
+int Reservation::getDuration(){return duration;}
+
+/*Métodos*/
+Hour Reservation::getEndingHour(){
+    return startingHour + duration;
 }
