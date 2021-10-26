@@ -29,7 +29,7 @@ class Hour{
         friend ostream& operator<<(ostream& os, const Hour& dt);
         friend ostream& operator>>(ostream& os, const Hour& dt);
 
-    protected:
+    private:
         int hours;
         int minutes;
 };

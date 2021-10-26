@@ -24,7 +24,7 @@ class Reservation{
         /*Métodos*/
         Hour getEndingHour();
 
-    protected:
+    private:
         string serviceCode;
         int clientId;
         Hour startingHour;
