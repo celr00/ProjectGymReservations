@@ -13,12 +13,13 @@ class Service{
         /*Sets and Gets*/
         void setCode(string cd){code = cd;}
         void setMaxTime(int mt){maxTime = mt;}
+        void setType(char t){type = t;}
         string getCode(){return code;}
         int getMaxTime(){return maxTime;}
         char getType(){return type;}
         /*Methods*/
         virtual void show() = 0;
-        virtual double getFinalCost() = 0;
+        virtual double getFinalCost(int t) = 0;
     protected:
         string code;
         int maxTime;
