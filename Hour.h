@@ -26,8 +26,8 @@ class Hour{
         bool operator>(Hour b);
         bool operator>=(Hour b);
         bool operator==(Hour b);
-        friend ostream& operator<<(ostream& os, const Hour& dt);
-        friend ostream& operator>>(ostream& os, const Hour& dt);
+        friend ostream& operator<<(ostream& os, Hour& dt);
+        friend istream& operator>>(istream& is, Hour& dt);
 
     private:
         int hours;
@@ -125,7 +125,7 @@ bool Hour::operator==(Hour b){
     return false;
 }
 
-ostream& operator<<(ostream& os, const Hour& h){
+ostream& operator<<(ostream& os, Hour& h){
     if(h.hours<10)
         os<<"0";
     os<<h.hours<<":";
@@ -134,4 +134,9 @@ ostream& operator<<(ostream& os, const Hour& h){
         os<<"0";
     os<<h.minutes;
     return os;
+}
+
+istream &operator>>(istream& is, Hour& dt) {
+    is >> dt.hours >> dt.minutes;
+    return is;
 }
