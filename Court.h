@@ -8,12 +8,12 @@ class Court:public Service{
         Court();
         Court(string cd, int mt, char t, double cxh, int pc, string sp);
         /*Set's and Get's*/
-        void setCostXHour(double cxh);
-        void setPeopleCapacity(int pc);
-        void setSport(string sp);
-        double getCostXHour();
-        int getPeopleCapacity();
-        string getSport();
+        void setCostXHour(double cxh){costXHour = cxh;}
+        void setPeopleCapacity(int pc){peopleCapacity = pc;}
+        void setSport(string sp){sport = sp;}
+        double getCostXHour(){return costXHour;}
+        int getPeopleCapacity(){return peopleCapacity;}
+        string getSport(){return sport;}
     private:
         double costXHour;
         int peopleCapacity;
