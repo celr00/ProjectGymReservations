@@ -21,7 +21,22 @@ class Court:public Service{
         double costXHour;
         int peopleCapacity;
         string sport;
-};void Court::show(){
+};
+
+/*Constructors*/
+Court::Court():Service(){
+    costXHour = 0;
+    peopleCapacity = 0;
+    sport = "";
+}
+Court::Court(string cd, int mt, char t, double cxh, int pc, string sp):Service(cd, mt, t){
+    costXHour = cxh;
+    peopleCapacity = pc;
+    sport = sp;
+}
+
+/*Methods*/
+void Court::show(){
     cout<<code<<"| Court: ";
     if(type == 'T' or type == 't')
         cout<<"Tenis"<<endl;
