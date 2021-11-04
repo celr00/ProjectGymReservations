@@ -9,8 +9,8 @@ using namespace std;
 
 int main(){
 
-    Reservation book[50];
     Service* available[20]; int contS = 0;
+    Reservation book[50]; int contR = 0;
 
     /*Loading the information of the service document to de array
     */
@@ -61,7 +61,39 @@ int main(){
         }
     }
 
+    /*Loading the information of the reservation's document to the array*/
 
+    ifstream reservationsDoc;
+    reservationsDoc.open("Reserva.txt");
+
+    string serviceCode, startHourS, startMinuteS, durationS;
+    int clientID, duration, startHour, startMinute;
+
+    while(getline(reservationsDoc, line)){
+        serviceCode = line.substr(0, line.find(" "));
+        line = line.substr(line.find(" ")+1);
+
+        startHourS = line.substr(0, line.find(" "));
+        startHour = stoi(startHourS);
+        line = line.substr(line.find(" ")+1);
+
+        startMinuteS = line.substr(0, line.find(" "));
+        startMinute = stoi(startMinuteS);
+        line = line.substr(line.find(" ")+1);
+
+        durationS = line.substr(0, line.find(" "));
+        duration = stoi(durationS);
+
+        clientID = stoi(line.substr(line.find(" ")+1));
+
+        cout<<"|"<<serviceCode<<"|"<<endl;
+        cout<<"|"<<startHour<<"|"<<endl;
+        cout<<"|"<<startMinute<<"|"<<endl;
+        cout<<"|"<<duration<<"|"<<endl;
+        cout<<"|"<<clientID<<"|"<<endl;
+
+        book[contR] = Reservation(serviceCode, clientID, Hour(startHour, startMinute), duration);
+        contR++;
     }
 
     return 0;
