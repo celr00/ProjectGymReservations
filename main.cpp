@@ -110,6 +110,32 @@ int main(){
                 }
                 break;
             case '2':
+                Service* service;
+                for(int i=0;i<contR;i++){
+                    bool siEsta = true;
+                    for(int j=0;j<contS;j++){
+                        if(book[i]->getServiceCode() == available[j]->getCode()){
+                            service = available[j];
+                            break;
+                        }
+                        if(j == contS-1){
+                            siEsta = false;
+                        }
+                    }
+
+                    if(siEsta){
+                        service->show();
+                        cout<<"Booked by Client #"<<book[i]->getclientId()<<endl;
+                        cout<<"Starting Hour: ";book[i]->getStartingHour().show();
+                        Hour eh = book[i]->getStartingHour();
+                        eh = eh + book[i]->getDuration();
+                        cout<<"Ending Hour: ";cout<<eh;cout<<endl;
+                        cout<<"Final Cost: "<<service->getFinalCost(book[i]->getDuration())<<endl<<endl;
+                    }else{
+                        cout<<"Invalid Code"<<endl<<endl;
+                    }
+                    
+                }
                 break;
             case '3':
                 break;
