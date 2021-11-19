@@ -195,8 +195,97 @@ int main(){
 
                 break;
             case '5':
-                cout<<"Haciendo Reservación..."<<endl;
-                break;
+            {
+                cout<<"Making a Reservation..."<<endl;
+
+                int clientId;
+                cout<<"Please enter oyu cliente#: ";cin>>clientId;
+
+                //Pedir Codigo de Servicio
+                string currentCode;
+                bool doesNotExists = true;
+                while(doesNotExists){
+                    cout<<"Please enter the code of the service your want to reserve: ";
+                    cin>>currentCode;
+                    for(int i=0;i<contS;i++){
+                        if(available[i]->getCode() == currentCode){
+                            doesNotExists = false;
+                            break;
+                        }
+                    }
+                    if(doesNotExists){
+                        cout<<"Please enter a valid code."<<endl;
+                    }
+                }
+
+                //Ver que esté disponible
+                int hr, min, dur;
+                Hour currentTime, finalTime;
+                bool scheduling = true;
+                while(scheduling){
+                    cout<<"Enter the hour you'd like to schedule: ";cin>>hr;
+                    cout<<"Enter the minute of that hour: ";cin>>min;
+                    cout<<"For how long do you want it? (min): ";cin>>dur;
+
+                    currentTime = Hour(hr, min);
+                    finalTime = currentTime + dur;
+                    currentTime = Hour(hr, min);
+
+                    bool everythingIsFine = true;
+                    bool thisIsFine;
+                    for(int i=0; i<contR;i++){
+                        thisIsFine = true;
+                        if(book[i]->getServiceCode() == currentCode){
+                            if(book[i]->getStartingHour() >= currentTime
+                            && book[i]->getStartingHour() <= finalTime){
+                                thisIsFine = false;
+                            }
+                            if(book[i]->getEndingHour() >= currentTime
+                            && book[i]->getEndingHour() <= finalTime){
+                                thisIsFine = false;
+                            }
+                            if(book[i]->getStartingHour() <= currentTime
+                            && book[i]->getEndingHour() >= finalTime){
+                                thisIsFine = false;
+                            }
+                            if(book[i]->getStartingHour() >= currentTime
+                            && book[i]->getEndingHour() <= finalTime){
+                                thisIsFine = false;
+                            }
+                        }
+                        if(!thisIsFine){
+                            cout<<"There is a reservation overlaping"<<endl;
+                            cout<<"\tStarting Hour: ";book[i]->getStartingHour().show();cout<<endl;
+                            cout<<"\tEnding Hour: ";book[i]->getEndingHour().show();cout<<endl;
+                            everythingIsFine = false;
+                        }
+                    }
+
+                    if(everythingIsFine){
+                        book[contR] = new Reservation(currentCode, clientId, currentTime, dur);
+                        contR++;
+                        cout<<"Reservation made."<<endl;
+                        scheduling = false;
+                    }else{
+                        char another;
+                        while(true){
+                            cout<<"Would you like to try anothe time?: (Y/N)";cin>>another;
+                            if(another == 'N' || another == 'n'){
+                                cout<<"You quitted to make a reservation."<<endl;
+                                scheduling = false;
+                                break;
+                            }else if(another == 'Y' || another == 'y'){
+                                cout<<"Try again."<<endl;
+                                scheduling = true;
+                                break;
+                            }else{
+                                cout<<"Enter a valid answer."<<endl;
+                            }
+                        }
+                    }
+                }
+
+            }break;
             case '6':
                 cout<<"Gracias! Vuelva pronto"<<endl;
             {
