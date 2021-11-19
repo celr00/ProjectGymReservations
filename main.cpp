@@ -138,6 +138,39 @@ int main(){
                 }
                 break;
             case '3':
+            {
+                Service* service;
+                string currentCode;
+                cout<<"Enter a service code: ";cin>>currentCode;
+                bool siEsta = true;
+
+                for(int i=0;i<contS;i++){
+                    if(available[i]->getCode() == currentCode){
+                        service = available[i];
+                        break;
+                    }
+                    if(i == contS-1){
+                        siEsta = false;
+                    }
+                }
+                
+                if(siEsta){
+
+                    for(int i=0;i<contR;i++){
+                        if(book[i]->getServiceCode() == currentCode){
+                            service->show();
+                            cout<<"Booked by Client #"<<book[i]->getclientId()<<endl;
+                            cout<<"Starting Hour: ";book[i]->getStartingHour().show();
+                            Hour eh = book[i]->getStartingHour();
+                            eh = eh + book[i]->getDuration();
+                            cout<<"Ending Hour: ";cout<<eh;cout<<endl;
+                            cout<<"Final Cost: "<<service->getFinalCost(book[i]->getDuration())<<endl<<endl;
+                        }
+                    }
+                }else{
+                    cout<<"Invalid Code"<<endl<<endl;
+                }
+            }
                 break;
             case '4':
                 cout<<"Consultando Reservaciones por Hora..."<<endl;
