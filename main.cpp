@@ -188,10 +188,8 @@ int main(){
                 cout<<"Gracias! Vuelva pronto"<<endl;
             {
                 activo = false;
-                break;
             }break;
             default:
-                cout<<"No ingresaste un dato válido."<<endl;
                 cout<<"Got no valid data."<<endl;
                 break;
         }
