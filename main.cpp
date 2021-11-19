@@ -104,6 +104,10 @@ int main(){
         cin>>ans;
         switch(ans){
             case '1':              
+                for(int i=0;i<contS;i++){
+                    available[i]->show();
+                    cout<<endl;
+                }
                 break;
             case '2':
                 break;
