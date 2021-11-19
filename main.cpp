@@ -287,8 +287,17 @@ int main(){
 
             }break;
             case '6':
-                cout<<"Gracias! Vuelva pronto"<<endl;
             {
+                cout<<"Thanks! Come again later."<<endl;
+
+                ofstream reservations;
+                reservations.open("Reserva.txt");
+
+                for(int i=0; i<contR;i++){
+                    reservations<<book[i]->getServiceCode()<<" "<<book[i]->getStartingHour().getHour()<<" "<<
+                    book[i]->getStartingHour().getMinute()<<" "<<book[i]->getDuration()<<" "<<book[i]->getclientId()<<endl;
+                }
+
                 activo = false;
             }break;
             default:
