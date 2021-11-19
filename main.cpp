@@ -164,12 +164,9 @@ int main(){
                     for(int i=0;i<contR;i++){
                         if(book[i]->getServiceCode() == currentCode){
                             service->show();
-                            cout<<"Booked by Client #"<<book[i]->getclientId()<<endl;
                             cout<<"Starting Hour: ";book[i]->getStartingHour().show();
                             Hour eh = book[i]->getStartingHour();
                             eh = eh + book[i]->getDuration();
-                            cout<<"Ending Hour: ";cout<<eh;cout<<endl;
-                            cout<<"Final Cost: "<<service->getFinalCost(book[i]->getDuration())<<endl<<endl;
                             cout<<"Ending Hour: ";cout<<eh;cout<<endl<<endl;
                         }
                     }
@@ -179,7 +176,23 @@ int main(){
             }
                 break;
             case '4':
-                cout<<"Consultando Reservaciones por Hora..."<<endl;
+                cout<<endl;
+                int min, hr;
+                cout<<"Enter starting Hour: ";cin>>hr;
+                cout<<"Enter starting Minute: ";cin>>min;
+                cout<<endl<<"Services of that hour"<<endl;
+
+                for(int i=0;i<contR;i++){
+                    if(min == book[i]->getStartingHour().getMinute() && hr == book[i]->getStartingHour().getHour()){
+                        for(int j=0;j<contS;j++){
+                            if(book[i]->getServiceCode() == available[j]->getCode()){
+                                available[j]->show();
+                                cout<<endl;
+                            }
+                        }
+                    }
+                }
+
                 break;
             case '5':
                 cout<<"Haciendo Reservación..."<<endl;
