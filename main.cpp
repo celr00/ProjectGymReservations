@@ -86,13 +86,7 @@ int main(){
 
         clientID = stoi(line.substr(line.find(" ")+1));
 
-        cout<<"|"<<serviceCode<<"|"<<endl;
-        cout<<"|"<<startHour<<"|"<<endl;
-        cout<<"|"<<startMinute<<"|"<<endl;
-        cout<<"|"<<duration<<"|"<<endl;
-        cout<<"|"<<clientID<<"|"<<endl;
-
-        book[contR] = Reservation(serviceCode, clientID, Hour(startHour, startMinute), duration);
+        book[contR] = new Reservation(serviceCode, clientID, Hour(startHour, startMinute), duration);
         contR++;
     }
 
