@@ -104,12 +104,15 @@ int main(){
         cin>>ans;
         switch(ans){
             case '1':              
+                cout<<endl<<"Services: "<<endl;
                 for(int i=0;i<contS;i++){
                     available[i]->show();
                     cout<<endl;
                 }
                 break;
             case '2':
+                cout<<endl<<"Reservations: "<<endl;
+
                 Service* service;
                 for(int i=0;i<contR;i++){
                     bool siEsta = true;
@@ -139,6 +142,8 @@ int main(){
                 break;
             case '3':
             {
+                cout<<endl;
+
                 Service* service;
                 string currentCode;
                 cout<<"Enter a service code: ";cin>>currentCode;
@@ -165,6 +170,7 @@ int main(){
                             eh = eh + book[i]->getDuration();
                             cout<<"Ending Hour: ";cout<<eh;cout<<endl;
                             cout<<"Final Cost: "<<service->getFinalCost(book[i]->getDuration())<<endl<<endl;
+                            cout<<"Ending Hour: ";cout<<eh;cout<<endl<<endl;
                         }
                     }
                 }else{
@@ -180,10 +186,13 @@ int main(){
                 break;
             case '6':
                 cout<<"Gracias! Vuelva pronto"<<endl;
+            {
                 activo = false;
                 break;
+            }break;
             default:
                 cout<<"No ingresaste un dato válido."<<endl;
+                cout<<"Got no valid data."<<endl;
                 break;
         }
     }
