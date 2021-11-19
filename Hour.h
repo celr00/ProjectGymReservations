@@ -68,31 +68,33 @@ void Hour::show(){
 
     if(minutes<10)
         cout<<"0";
-    cout<<minutes<<endl;
+    cout<<minutes;
 }
 
 /***Opertaor Overloading***/
 Hour Hour::operator+(int num){
-    minutes += num;
-    while(minutes >=60){
-        minutes -= 60;
-        hours++;
-        if(hours == 24){
-            hours == 0;
+    Hour newHour = Hour(hours, minutes);
+    newHour.minutes += num;
+    while(newHour.minutes >=60){
+        newHour.minutes -= 60;
+        newHour.hours++;
+        if(newHour.hours == 24){
+            newHour.hours == 0;
         }
     }
-    return *this;
+    return newHour;
 }
 Hour Hour::operator-(int num){
-    minutes -= num;
-    while(minutes < 0){
-        minutes += 60;
-        hours--;
-        if(hours == -1){
-            hours = 23;
+    Hour newHour = Hour(hours, minutes);
+    newHour.minutes -= num;
+    while(newHour.minutes < 0){
+        newHour.minutes += 60;
+        newHour.hours--;
+        if(newHour.hours == -1){
+            newHour.hours = 23;
         }
     }
-    return *this;  
+    return newHour;  
 }
 bool Hour::operator<(Hour b){
     if(hours*60 + minutes < b.hours*60 + b.minutes){
