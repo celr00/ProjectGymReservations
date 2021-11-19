@@ -10,7 +10,7 @@ using namespace std;
 int main(){
 
     Service* available[20]; int contS = 0;
-    Reservation book[50]; int contR = 0;
+    Reservation* book[50]; int contR = 0;
 
     /*Loading the information of the service document to de array
     */
