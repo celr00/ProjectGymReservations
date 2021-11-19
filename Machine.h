@@ -47,10 +47,10 @@ void Machine::show(){
     cout<<"Description: "<<descripcion<<endl;
     cout<<"$"<<costX15min<<" every 15 minutes."<<endl;
     if(withInstructor)
-        cout<<"It includes an instructor."<<endl;
+        cout<<"Includes an instructor."<<endl;
     else
-        cout<<"It does not include an instructor."<<endl;
-    cout<<"*Max Time of rent: "<<maxTime<<endl<<endl;
+        cout<<"Without instructor."<<endl;
+    cout<<"*Max Time of rent: "<<maxTime<<endl;
 }
 double Machine::getFinalCost(int t){
     return (double)t/15*costX15min;

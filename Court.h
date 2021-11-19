@@ -46,7 +46,7 @@ void Court::show(){
         cout<<"Volley Ball"<<endl;
     cout<<"People Capacity: "<<peopleCapacity<<endl;
     cout<<"$"<<costXHour<<" every hour."<<endl;
-    cout<<"*Max Time of rent: "<<maxTime<<endl<<endl;
+    cout<<"*Max Time of rent: "<<maxTime<<endl;
 }
 double Court::getFinalCost(int t){
     return (double)t/60*costXHour;
