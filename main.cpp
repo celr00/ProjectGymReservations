@@ -90,5 +90,40 @@ int main(){
         contR++;
     }
 
+    bool activo = true;
+    char ans;
+    while(activo){
+        cout<<"***MENU***"<<endl;
+        cout<<"1) List of Services"<<endl;
+        cout<<"2) List of Reservations"<<endl;
+        cout<<"3) Reservations of a Service"<<endl;
+        cout<<"4) Reservations per hour"<<endl;
+        cout<<"5) Make a Reservation"<<endl;
+        cout<<"6) End"<<endl;
+        cout<<"Please select your option: ";
+        cin>>ans;
+        switch(ans){
+            case '1':              
+                break;
+            case '2':
+                break;
+            case '3':
+                break;
+            case '4':
+                cout<<"Consultando Reservaciones por Hora..."<<endl;
+                break;
+            case '5':
+                cout<<"Haciendo Reservación..."<<endl;
+                break;
+            case '6':
+                cout<<"Gracias! Vuelva pronto"<<endl;
+                activo = false;
+                break;
+            default:
+                cout<<"No ingresaste un dato válido."<<endl;
+                break;
+        }
+    }
+
     return 0;
 }
